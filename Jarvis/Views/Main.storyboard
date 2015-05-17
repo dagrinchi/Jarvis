@@ -1,53 +1,99 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9rY-1i-lEW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PeM-LG-xjr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="3Ri-dz-WYS">
+            <objects>
+                <navigationController id="PeM-LG-xjr" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jV6-8y-tmp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="L9s-M9-7dU" kind="relationship" relationship="rootViewController" id="DPW-ky-xB2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w7V-Vv-0au" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-750" y="1110"/>
+        </scene>
+        <!--Login Form View Controller-->
+        <scene sceneID="fdh-uG-elE">
+            <objects>
+                <viewController id="L9s-M9-7dU" customClass="LoginFormViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="akZ-Ev-7bB"/>
+                        <viewControllerLayoutGuide type="bottom" id="aNB-JY-iv2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UoE-G5-aGx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uA1-zv-UHW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xFI-XE-Qhk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-245" y="1110"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="ccs-ba-h7o">
             <objects>
-                <viewController id="uik-05-D8D" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainView" id="uik-05-D8D" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eeI-2y-2Zd"/>
                         <viewControllerLayoutGuide type="bottom" id="dE4-Rz-pee"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Seu-cV-Ahx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oR-Af-aEf">
-                                <rect key="frame" x="81" y="351" width="158" height="30"/>
-                                <state key="normal" title="Start">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startButtonAction:" destination="uik-05-D8D" eventType="touchUpInside" id="nWU-by-tTv"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QEh-3N-ni6">
-                                <rect key="frame" x="16" y="20" width="120" height="30"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.000000" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QEh-3N-ni6">
+                                <rect key="frame" x="184" y="28" width="120" height="30"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="guq-ai-lF3">
-                                <rect key="frame" x="16" y="67" width="120" height="30"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxL-X7-1Ag">
-                                <rect key="frame" x="81" y="405" width="156" height="30"/>
-                                <state key="normal" title="Stop">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxL-X7-1Ag">
+                                <rect key="frame" x="0.0" y="426" width="320" height="60"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="21"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="STOP" backgroundImage="Botton.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="stopButtonAction:" destination="uik-05-D8D" eventType="touchUpInside" id="HmY-1e-p2a"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.000000" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="guq-ai-lF3">
+                                <rect key="frame" x="184" y="58" width="120" height="30"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="21"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oR-Af-aEf">
+                                <rect key="frame" x="0.0" y="488" width="320" height="60"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="21"/>
+                                <state key="normal" title="START" backgroundImage="Botton.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButtonAction:" destination="uik-05-D8D" eventType="touchUpInside" id="nWU-by-tTv"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="iGz-OF-y7H"/>
                     <connections>
                         <outlet property="inLevelLabel" destination="QEh-3N-ni6" id="EkI-yd-MBi"/>
                         <outlet property="outLevelLabel" destination="guq-ai-lF3" id="dWu-Kk-zQe"/>
@@ -59,24 +105,7 @@
             </objects>
             <point key="canvasLocation" x="-245" y="429"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="5gR-iC-du7">
-            <objects>
-                <navigationController id="9rY-1i-lEW" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="yrj-5v-Y1t">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="EAk-x2-B2D" kind="relationship" relationship="rootViewController" id="euS-vz-1CN"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uWm-qB-YBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-245" y="-211"/>
-        </scene>
-        <!--REGÍSTRO-->
+        <!--Register-->
         <scene sceneID="OfV-z9-Yc4">
             <objects>
                 <viewController id="EAk-x2-B2D" customClass="RegistrationFormViewController" sceneMemberID="viewController">
@@ -85,17 +114,20 @@
                         <viewControllerLayoutGuide type="bottom" id="Zoa-TM-iKl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hQo-fa-AsI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="REGÍSTRO" id="2n7-pZ-BVS"/>
+                    <navigationItem key="navigationItem" title="Register" id="2n7-pZ-BVS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82W-J1-p7B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="237" y="-211"/>
+            <point key="canvasLocation" x="235" y="1110"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Botton.png" width="320" height="60"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9043FD4235B7A18354C336B9"
+               BlueprintIdentifier = "2183FB852E1F2E087D9A6997"
                BuildableName = "libPods-Jarvis-TransitionKit.a"
                BlueprintName = "Pods-Jarvis-TransitionKit"
                ReferencedContainer = "container:Pods.xcodeproj">

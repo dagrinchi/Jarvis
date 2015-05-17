@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9E2D88DFC07EEE601E4CF055"
+               BlueprintIdentifier = "3FFBEA21FEE47EE7F508C339"
                BuildableName = "libPods-Jarvis-SAMCircleProgressView.a"
                BlueprintName = "Pods-Jarvis-SAMCircleProgressView"
                ReferencedContainer = "container:Pods.xcodeproj">

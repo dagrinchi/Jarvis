@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 #import <RestKit/RestKit.h>
 #import <RestKit/CoreData.h>
 #import <RestKit/Search.h>
 #import "Registration.h"
 #import "Login.h"
+#import "DeviceStatus.h"
 #import "Webservice.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

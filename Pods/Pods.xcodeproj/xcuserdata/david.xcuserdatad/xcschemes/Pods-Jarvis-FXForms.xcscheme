@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "35F256A41F67010C59C0499B"
+               BlueprintIdentifier = "B8C8B9DB47DC240F4961DD2E"
                BuildableName = "libPods-Jarvis-FXForms.a"
                BlueprintName = "Pods-Jarvis-FXForms"
                ReferencedContainer = "container:Pods.xcodeproj">

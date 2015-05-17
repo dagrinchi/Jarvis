@@ -36,7 +36,7 @@
 
 @implementation MainViewController
 
-#define kLevelUpdatesPerSecond 1000000
+#define kLevelUpdatesPerSecond 10000000
 #define kGetNbest
 
 - (void)viewDidLoad {
@@ -113,16 +113,22 @@
         
         [self startDisplayingLevels];
         
-        self.startButton.hidden = TRUE;
-        self.stopButton.hidden = TRUE;
+        self.startButton.enabled = FALSE;
+        self.stopButton.enabled = FALSE;
     }
 
+    
+    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfMappedFile:@"wave.gif"]];
+    FLAnimatedImageView *imageView = [[FLAnimatedImageView alloc] init];
+    imageView.animatedImage = image;
+    imageView.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
+    [self.view addSubview:imageView];
     
 }
 
 - (void) pocketsphinxDidReceiveHypothesis:(NSString *)hypothesis recognitionScore:(NSString *)recognitionScore utteranceID:(NSString *)utteranceID {
     
-    NSLog(@"Local callback: The received hypothesis is %@ with a score of %@ and an ID of %@", hypothesis, recognitionScore, utteranceID); // Log it.
+    NSLog(@"Local callback: The received hypothesis is %@ with a score of %@ and an ID of %@", hypothesis, recognitionScore, utteranceID);
     
     if([hypothesis containsString:@"OPEN"]) {
         
@@ -130,118 +136,117 @@
         
     } else if ([hypothesis containsString:@"START"]) {
         
+        
     }
     
-    //self.heardTextView.text = [NSString stringWithFormat:@"Heard: \"%@\"", hypothesis]; // Show it in the status box.
     [self.fliteController say:[NSString stringWithFormat:@"You said %@", hypothesis] withVoice:self.slt];
 }
 
+static void ShowAlertWithError(NSString *error)
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:error
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
 #ifdef kGetNbest
-- (void) pocketsphinxDidReceiveNBestHypothesisArray:(NSArray *)hypothesisArray { // Pocketsphinx has an n-best hypothesis dictionary.
+- (void) pocketsphinxDidReceiveNBestHypothesisArray:(NSArray *)hypothesisArray {
     NSLog(@"Local callback:  hypothesisArray is %@",hypothesisArray);
 }
 #endif
 
 - (void) audioSessionInterruptionDidBegin {
-    NSLog(@"Local callback:  AudioSession interruption began."); // Log it.
-    //self.statusTextView.text = @"Status: AudioSession interruption began."; // Show it in the status box.
+    NSLog(@"Local callback:  AudioSession interruption began.");
     NSError *error = nil;
     if([OEPocketsphinxController sharedInstance].isListening) {
-        error = [[OEPocketsphinxController sharedInstance] stopListening]; // React to it by telling Pocketsphinx to stop listening (if it is listening) since it will need to restart its loop after an interruption.
+        error = [[OEPocketsphinxController sharedInstance] stopListening];
         if(error) NSLog(@"Error while stopping listening in audioSessionInterruptionDidBegin: %@", error);
     }
 }
 
 
 - (void) audioSessionInterruptionDidEnd {
-    NSLog(@"Local callback:  AudioSession interruption ended."); // Log it.
-    // self.statusTextView.text = @"Status: AudioSession interruption ended."; // Show it in the status box.
-    // We're restarting the previously-stopped listening loop.
+    NSLog(@"Local callback:  AudioSession interruption ended.");
+    
     if(![OEPocketsphinxController sharedInstance].isListening){
-        [[OEPocketsphinxController sharedInstance] startListeningWithLanguageModelAtPath:self.pathToFirstDynamicallyGeneratedLanguageModel dictionaryAtPath:self.pathToFirstDynamicallyGeneratedDictionary acousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:FALSE]; // Start speech recognition if we aren't currently listening.
+        [[OEPocketsphinxController sharedInstance] startListeningWithLanguageModelAtPath:self.pathToFirstDynamicallyGeneratedLanguageModel dictionaryAtPath:self.pathToFirstDynamicallyGeneratedDictionary acousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:FALSE];
     }
 }
 
 
 - (void) audioInputDidBecomeUnavailable {
-    NSLog(@"Local callback:  The audio input has become unavailable"); // Log it.
-    // self.statusTextView.text = @"Status: The audio input has become unavailable"; // Show it in the status box.
+    NSLog(@"Local callback:  The audio input has become unavailable");
     NSError *error = nil;
     if([OEPocketsphinxController sharedInstance].isListening){
-        error = [[OEPocketsphinxController sharedInstance] stopListening]; // React to it by telling Pocketsphinx to stop listening since there is no available input (but only if we are listening).
+        error = [[OEPocketsphinxController sharedInstance] stopListening];
+        
         if(error) NSLog(@"Error while stopping listening in audioInputDidBecomeUnavailable: %@", error);
     }
 }
 
 
 - (void) audioInputDidBecomeAvailable {
-    NSLog(@"Local callback: The audio input is available"); // Log it.
-    // self.statusTextView.text = @"Status: The audio input is available"; // Show it in the status box.
+    NSLog(@"Local callback: The audio input is available");
+
     if(![OEPocketsphinxController sharedInstance].isListening) {
-        [[OEPocketsphinxController sharedInstance] startListeningWithLanguageModelAtPath:self.pathToFirstDynamicallyGeneratedLanguageModel dictionaryAtPath:self.pathToFirstDynamicallyGeneratedDictionary acousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:FALSE]; // Start speech recognition, but only if we aren't already listening.
+        [[OEPocketsphinxController sharedInstance] startListeningWithLanguageModelAtPath:self.pathToFirstDynamicallyGeneratedLanguageModel dictionaryAtPath:self.pathToFirstDynamicallyGeneratedDictionary acousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:FALSE];
     }
 }
 
 - (void) audioRouteDidChangeToRoute:(NSString *)newRoute {
-    NSLog(@"Local callback: Audio route change. The new audio route is %@", newRoute); // Log it.
-    //self.statusTextView.text = [NSString stringWithFormat:@"Status: Audio route change. The new audio route is %@",newRoute]; // Show it in the status box.
+    NSLog(@"Local callback: Audio route change. The new audio route is %@", newRoute);
     
-    NSError *error = [[OEPocketsphinxController sharedInstance] stopListening]; // React to it by telling the Pocketsphinx loop to shut down and then start listening again on the new route
+    NSError *error = [[OEPocketsphinxController sharedInstance] stopListening];
     
     if(error)NSLog(@"Local callback: error while stopping listening in audioRouteDidChangeToRoute: %@",error);
     
     if(![OEPocketsphinxController sharedInstance].isListening) {
-        [[OEPocketsphinxController sharedInstance] startListeningWithLanguageModelAtPath:self.pathToFirstDynamicallyGeneratedLanguageModel dictionaryAtPath:self.pathToFirstDynamicallyGeneratedDictionary acousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:FALSE]; // Start speech recognition if we aren't already listening.
+        [[OEPocketsphinxController sharedInstance] startListeningWithLanguageModelAtPath:self.pathToFirstDynamicallyGeneratedLanguageModel dictionaryAtPath:self.pathToFirstDynamicallyGeneratedDictionary acousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:FALSE];
     }
 }
 
 
 - (void) pocketsphinxRecognitionLoopDidStart {
     
-    NSLog(@"Local callback: Pocketsphinx started."); // Log it.
-    //self.statusTextView.text = @"Status: Pocketsphinx started."; // Show it in the status box.
+    NSLog(@"Local callback: Pocketsphinx started.");
 }
 
 
 - (void) pocketsphinxDidStartListening {
     
-    NSLog(@"Local callback: Pocketsphinx is now listening."); // Log it.
-    //self.statusTextView.text = @"Status: Pocketsphinx is now listening."; // Show it in the status box.
+    NSLog(@"Local callback: Pocketsphinx is now listening.");
     
-    self.startButton.hidden = TRUE; // React to it with some UI changes.
-    self.stopButton.hidden = FALSE;
+    self.startButton.enabled = FALSE;
+    self.stopButton.enabled = TRUE;
 }
 
 
 - (void) pocketsphinxDidDetectSpeech {
-    NSLog(@"Local callback: Pocketsphinx has detected speech."); // Log it.
-    //self.statusTextView.text = @"Status: Pocketsphinx has detected speech."; // Show it in the status box.
+    NSLog(@"Local callback: Pocketsphinx has detected speech.");
 }
 
 
 - (void) pocketsphinxDidDetectFinishedSpeech {
-    NSLog(@"Local callback: Pocketsphinx has detected a second of silence, concluding an utterance."); // Log it.
+    NSLog(@"Local callback: Pocketsphinx has detected a second of silence, concluding an utterance.");
     [self stopButtonAction];
-    //self.statusTextView.text = @"Status: Pocketsphinx has detected finished speech."; // Show it in the status box.
 }
 
 
 
 - (void) pocketsphinxDidStopListening {
-    NSLog(@"Local callback: Pocketsphinx has stopped listening."); // Log it.
-    //self.statusTextView.text = @"Status: Pocketsphinx has stopped listening."; // Show it in the status box.
+    NSLog(@"Local callback: Pocketsphinx has stopped listening.");
 }
 
 
 - (void) pocketsphinxDidSuspendRecognition {
-    NSLog(@"Local callback: Pocketsphinx has suspended recognition."); // Log it.
-    //self.statusTextView.text = @"Status: Pocketsphinx has suspended recognition."; // Show it in the status box.
+    NSLog(@"Local callback: Pocketsphinx has suspended recognition.");
 }
 
 
 - (void) pocketsphinxDidResumeRecognition {
-    NSLog(@"Local callback: Pocketsphinx has resumed recognition."); // Log it.
-    //self.statusTextView.text = @"Status: Pocketsphinx has resumed recognition."; // Show it in the status box.
+    NSLog(@"Local callback: Pocketsphinx has resumed recognition.");
 }
 
 
@@ -251,29 +256,26 @@
 
 
 - (void) fliteDidStartSpeaking {
-    NSLog(@"Local callback: Flite has started speaking"); // Log it.
-    //self.statusTextView.text = @"Status: Flite has started speaking."; // Show it in the status box.
+    NSLog(@"Local callback: Flite has started speaking");
 }
 
 - (void) fliteDidFinishSpeaking {
-    NSLog(@"Local callback: Flite has finished speaking"); // Log it.
-    //self.statusTextView.text = @"Status: Flite has finished speaking."; // Show it in the status box.
+    NSLog(@"Local callback: Flite has finished speaking");
 }
 
-- (void) pocketSphinxContinuousSetupDidFailWithReason:(NSString *)reasonForFailure { // This can let you know that something went wrong with the recognition loop startup. Turn on [OELogging startOpenEarsLogging] to learn why.
-    NSLog(@"Local callback: Setting up the continuous recognition loop has failed for the reason %@, please turn on [OELogging startOpenEarsLogging] to learn more.", reasonForFailure); // Log it.
-    //self.statusTextView.text = @"Status: Not possible to start recognition loop."; // Show it in the status box.
+- (void) pocketSphinxContinuousSetupDidFailWithReason:(NSString *)reasonForFailure {
+    NSLog(@"Local callback: Setting up the continuous recognition loop has failed for the reason %@, please turn on [OELogging startOpenEarsLogging] to learn more.", reasonForFailure);
 }
 
-- (void) pocketSphinxContinuousTeardownDidFailWithReason:(NSString *)reasonForFailure { // This can let you know that something went wrong with the recognition loop startup. Turn on [OELogging startOpenEarsLogging] to learn why.
-    NSLog(@"Local callback: Tearing down the continuous recognition loop has failed for the reason %@, please turn on [OELogging startOpenEarsLogging] to learn more.", reasonForFailure); // Log it.
-    //self.statusTextView.text = @"Status: Not possible to cleanly end recognition loop."; // Show it in the status box.
+- (void) pocketSphinxContinuousTeardownDidFailWithReason:(NSString *)reasonForFailure {
+    NSLog(@"Local callback: Tearing down the continuous recognition loop has failed for the reason %@, please turn on [OELogging startOpenEarsLogging] to learn more.", reasonForFailure);
+    
 }
 
-- (void) testRecognitionCompleted { // A test file which was submitted for direct recognition via the audio driver is done.
-    NSLog(@"Local callback: A test file which was submitted for direct recognition via the audio driver is done."); // Log it.
+- (void) testRecognitionCompleted {
+    NSLog(@"Local callback: A test file which was submitted for direct recognition via the audio driver is done.");
     NSError *error = nil;
-    if([OEPocketsphinxController sharedInstance].isListening) { // If we're listening, stop listening.
+    if([OEPocketsphinxController sharedInstance].isListening) {
         error = [[OEPocketsphinxController sharedInstance] stopListening];
         if(error) NSLog(@"Error while stopping listening in testRecognitionCompleted: %@", error);
     }
@@ -284,7 +286,7 @@
     NSLog(@"Local callback: The user has never set mic permissions or denied permission to this app's mic, so listening will not start.");
     self.startupFailedDueToLackOfPermissions = TRUE;
     if([OEPocketsphinxController sharedInstance].isListening){
-        NSError *error = [[OEPocketsphinxController sharedInstance] stopListening]; // Stop listening if we are listening.
+        NSError *error = [[OEPocketsphinxController sharedInstance] stopListening];
         if(error) NSLog(@"Error while stopping listening in micPermissionCheckCompleted: %@", error);
     }
 }
@@ -293,9 +295,9 @@
 - (void) micPermissionCheckCompleted:(BOOL)result {
     if(result) {
         self.restartAttemptsDueToPermissionRequests++;
-        if(self.restartAttemptsDueToPermissionRequests == 1 && self.startupFailedDueToLackOfPermissions) { // If we get here because there was an attempt to start which failed due to lack of permissions, and now permissions have been requested and they returned true, we restart exactly once with the new permissions.
+        if(self.restartAttemptsDueToPermissionRequests == 1 && self.startupFailedDueToLackOfPermissions) {
             
-            if(![OEPocketsphinxController sharedInstance].isListening) { // If there was no error and we aren't listening, start listening.
+            if(![OEPocketsphinxController sharedInstance].isListening) {
                 [[OEPocketsphinxController sharedInstance]
                  startListeningWithLanguageModelAtPath:self.pathToFirstDynamicallyGeneratedLanguageModel
                  dictionaryAtPath:self.pathToFirstDynamicallyGeneratedDictionary
@@ -309,51 +311,48 @@
 }
 
 
-- (IBAction) suspendListeningButtonAction { // This is the action for the button which suspends listening without ending the recognition loop
+- (IBAction) suspendListeningButtonAction {
     [[OEPocketsphinxController sharedInstance] suspendRecognition];
     
-    self.startButton.hidden = TRUE;
-    self.stopButton.hidden = FALSE;
+    self.startButton.enabled = FALSE;
+    self.stopButton.enabled = TRUE;
     //self.suspendListeningButton.hidden = TRUE;
     //self.resumeListeningButton.hidden = FALSE;
 }
 
-- (IBAction) resumeListeningButtonAction { // This is the action for the button which resumes listening if it has been suspended
+- (IBAction) resumeListeningButtonAction {
     [[OEPocketsphinxController sharedInstance] resumeRecognition];
     
-    self.startButton.hidden = TRUE;
-    self.stopButton.hidden = FALSE;
-//    self.suspendListeningButton.hidden = FALSE;
-//    self.resumeListeningButton.hidden = TRUE;
+    self.startButton.enabled = FALSE;
+    self.stopButton.enabled = TRUE;
 }
 
-- (void) startDisplayingLevels { // Start displaying the levels using a timer
-    [self stopDisplayingLevels]; // We never want more than one timer valid so we'll stop any running timers first.
+- (void) startDisplayingLevels {
+    [self stopDisplayingLevels];
     self.uiUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/kLevelUpdatesPerSecond target:self selector:@selector(updateLevelsUI) userInfo:nil repeats:YES];
 }
 - (IBAction)stopButtonAction {
     NSError *error = nil;
-    if([OEPocketsphinxController sharedInstance].isListening) { // Stop if we are currently listening.
+    if([OEPocketsphinxController sharedInstance].isListening) {
         error = [[OEPocketsphinxController sharedInstance] stopListening];
         if(error)NSLog(@"Error stopping listening in stopButtonAction: %@", error);
     }
-    self.startButton.hidden = FALSE;
-    self.stopButton.hidden = TRUE;
+    self.startButton.enabled = TRUE;
+    self.stopButton.enabled = FALSE;
 }
 
-- (void) stopDisplayingLevels { // Stop displaying the levels by stopping the timer if it's running.
-    if(self.uiUpdateTimer && [self.uiUpdateTimer isValid]) { // If there is a running timer, we'll stop it here.
+- (void) stopDisplayingLevels {
+    if(self.uiUpdateTimer && [self.uiUpdateTimer isValid]) {
         [self.uiUpdateTimer invalidate];
         self.uiUpdateTimer = nil;
     }
 }
 
-- (void) updateLevelsUI { // And here is how we obtain the levels.  This method includes the actual OpenEars methods and uses their results to update the UI of this view controller.
+- (void) updateLevelsUI {
     
-    self.inLevelLabel.text = [NSString stringWithFormat:@"%f",[[OEPocketsphinxController sharedInstance] pocketsphinxInputLevel]];  //pocketsphinxInputLevel is an OpenEars method of the class OEPocketsphinxController.
-    
+    self.inLevelLabel.text = [NSString stringWithFormat:@"%f",[[OEPocketsphinxController sharedInstance] pocketsphinxInputLevel]];
     if(self.fliteController.speechInProgress) {
-        self.outLevelLabel.text = [NSString stringWithFormat:@"%f",[self.fliteController fliteOutputLevel]]; // fliteOutputLevel is an OpenEars method of the class OEFliteController.
+        self.outLevelLabel.text = [NSString stringWithFormat:@"%f",[self.fliteController fliteOutputLevel]];
     }
 }
 
@@ -363,10 +362,17 @@
 }
 
 - (IBAction)startButtonAction:(UIButton *)sender {
+    NSString *path  = [[NSBundle mainBundle] pathForResource:@"button-3" ofType:@"wav"];
+    NSURL *pathURL = [NSURL fileURLWithPath : path];
+    
+    SystemSoundID audioEffect;
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
+    AudioServicesPlaySystemSound(audioEffect);
+    
     if(![OEPocketsphinxController sharedInstance].isListening) {
-        [[OEPocketsphinxController sharedInstance] startListeningWithLanguageModelAtPath:self.pathToFirstDynamicallyGeneratedLanguageModel dictionaryAtPath:self.pathToFirstDynamicallyGeneratedDictionary acousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:FALSE]; // Start speech recognition if we aren't already listening.
+        [[OEPocketsphinxController sharedInstance] startListeningWithLanguageModelAtPath:self.pathToFirstDynamicallyGeneratedLanguageModel dictionaryAtPath:self.pathToFirstDynamicallyGeneratedDictionary acousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:FALSE];
     }
-    self.startButton.hidden = TRUE;
+    self.startButton.enabled = FALSE;
 
 }
 @end

@@ -13,6 +13,7 @@ target "Jarvis" do
     pod 'SVWebViewController', :head
     pod 'FXModelValidation',  '1.0.2'
     pod 'MBProgressHUD', '~> 0.9'
+    pod 'FLAnimatedImage', '~> 1.0'
     
 end
 

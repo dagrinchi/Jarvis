@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DCFF7A5765F3FDF4825E9DF3"
+               BlueprintIdentifier = "8257E8E6D3480FC48F471FDD"
                BuildableName = "libPods-Jarvis-SAMGradientView.a"
                BlueprintName = "Pods-Jarvis-SAMGradientView"
                ReferencedContainer = "container:Pods.xcodeproj">

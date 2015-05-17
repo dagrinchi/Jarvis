@@ -42,9 +42,17 @@
     RKObjectMapping *registrationRpMapping = [RKObjectMapping mappingForClass:[Registration class]];
     [registrationRpMapping addAttributeMappingsFromDictionary:@{@"email"         :@"Email"}];
     
+    //DEVICE STATUS REQUEST MAPPING
+    RKObjectMapping *deviceStatusRqMapping = [RKObjectMapping requestMapping];
+    [deviceStatusRqMapping addAttributeMappingsFromDictionary:@{@"id"               :@"Id",
+                                                                @"identification"   :@"Identification",
+                                                                @"status"           :@"Status",
+                                                                @"created"          :@"Created"}];
+    
     //DEVICE STATUS RESPONSE MAPPING
-    RKObjectMapping *deviceStatusRpMapping = [RKObjectMapping mappingForClass:[Registration class]];
-    [registrationRpMapping addAttributeMappingsFromDictionary:@{@"identification"   :@"Identification",
+    RKObjectMapping *deviceStatusRpMapping = [RKObjectMapping mappingForClass:[DeviceStatus class]];
+    [registrationRpMapping addAttributeMappingsFromDictionary:@{@"id"               :@"Id",
+                                                                @"identification"   :@"Identification",
                                                                 @"status"           :@"Status",
                                                                 @"created"          :@"Created"}];
     
@@ -68,7 +76,7 @@
     if (! success) {
         RKLogError(@"Failed to create Application Data Directory at path '%@': %@", RKApplicationDataDirectory(), error);
     }
-    NSString *path = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"Agronegocios.sqlite"];
+    NSString *path = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"Jarvis.sqlite"];
     NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:path fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
     if (! persistentStore) {
         RKLogError(@"Failed adding persistent store at path '%@': %@", path, error);
@@ -78,7 +86,7 @@
     [managedObjectStore startIndexingPersistentStoreManagedObjectContext];
     
     RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:BASE_URL]];
-//    objectManager.managedObjectStore = managedObjectStore;
+    objectManager.managedObjectStore = managedObjectStore;
     
     // RESPONSE DESCRIPTORS
     NSArray *responseDescriptors = @[[RKResponseDescriptor responseDescriptorWithMapping:registrationRpMapping
@@ -103,6 +111,10 @@
                                                                           objectClass:[Registration class]
                                                                           rootKeyPath:nil
                                                                                method:RKRequestMethodPOST],
+                                    [RKRequestDescriptor requestDescriptorWithMapping:deviceStatusRqMapping
+                                                                          objectClass:[DeviceStatus class]
+                                                                          rootKeyPath:nil
+                                                                               method:RKRequestMethodPUT],
                                     [RKRequestDescriptor requestDescriptorWithMapping:loginRqMapping
                                                                           objectClass:[Login class]
                                                                           rootKeyPath:nil
@@ -111,26 +123,6 @@
     
     
     return YES;
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-
 }
 
 @end

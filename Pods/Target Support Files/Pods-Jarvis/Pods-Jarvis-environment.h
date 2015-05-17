@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking 4
 
+// FLAnimatedImage
+#define COCOAPODS_POD_AVAILABLE_FLAnimatedImage
+#define COCOAPODS_VERSION_MAJOR_FLAnimatedImage 1
+#define COCOAPODS_VERSION_MINOR_FLAnimatedImage 0
+#define COCOAPODS_VERSION_PATCH_FLAnimatedImage 8
+
 // FXForms
 #define COCOAPODS_POD_AVAILABLE_FXForms
 #define COCOAPODS_VERSION_MAJOR_FXForms 1

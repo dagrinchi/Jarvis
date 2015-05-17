@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8DFE76FA3CE7AD9F576D4488"
+               BlueprintIdentifier = "6D691943C7D4056C7B62B544"
                BuildableName = "libPods-Jarvis-SSToolkit.a"
                BlueprintName = "Pods-Jarvis-SSToolkit"
                ReferencedContainer = "container:Pods.xcodeproj">
