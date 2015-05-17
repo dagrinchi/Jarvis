@@ -9,11 +9,13 @@
 #ifndef Jarvis_Webservice_h
 #define Jarvis_Webservice_h
 
-#define BASE_URL @"http://jarvis007.azurewebistes.net"
+#define BASE_URL @"http://jarvisassistant.azurewebsites.net"
 
 #define GRANT_TYPE @"password"
 
 #define REGISTER_PATH @"/api/Account/Register"
+
+#define DEVICE_STATUS_PATH @"/api/DeviceStatus"
 
 #define TOKEN_PATH @"/Token"
 

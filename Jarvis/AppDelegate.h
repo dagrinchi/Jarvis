@@ -10,6 +10,9 @@
 #import <RestKit/RestKit.h>
 #import <RestKit/CoreData.h>
 #import <RestKit/Search.h>
+#import "Registration.h"
+#import "Login.h"
+#import "Webservice.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -10,6 +10,8 @@
 	<string>Jarvis</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>F478BBAA4C91924B48D8F87F9EA6E32A69FE4111</key>
+		<string>https://github.com/dagrinchi/Agronegocios.git</string>
 		<key>FF7621758952B69ACB385D6914DB8B1A63ADD698</key>
 		<string>https://github.com/dagrinchi/Jarvis.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>Jarvis.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>F478BBAA4C91924B48D8F87F9EA6E32A69FE4111</key>
+		<string>../../Agronegocios</string>
 		<key>FF7621758952B69ACB385D6914DB8B1A63ADD698</key>
 		<string>..</string>
 	</dict>
@@ -28,6 +32,14 @@
 	<string>FF7621758952B69ACB385D6914DB8B1A63ADD698</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F478BBAA4C91924B48D8F87F9EA6E32A69FE4111</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Agronegocios</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
