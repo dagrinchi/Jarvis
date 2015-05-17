@@ -32,6 +32,9 @@
 @property (nonatomic, assign) int restartAttemptsDueToPermissionRequests;
 @property (nonatomic, assign) BOOL startupFailedDueToLackOfPermissions;
 
+@property (strong, nonatomic) IBOutlet UIButton *keyButton;
+@property (strong, nonatomic) IBOutlet UIButton *powerButton;
+
 @end
 
 @implementation MainViewController
@@ -50,14 +53,6 @@
     self.restartAttemptsDueToPermissionRequests = 0;
     self.startupFailedDueToLackOfPermissions = FALSE;
     
-   
-    NSString *path  = [[NSBundle mainBundle] pathForResource:@"button-3" ofType:@"wav"];
-    NSURL *pathURL = [NSURL fileURLWithPath : path];
-    
-    SystemSoundID audioEffect;
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-    AudioServicesPlaySystemSound(audioEffect);
-    
     [OELogging startOpenEarsLogging];
     [OEPocketsphinxController sharedInstance].verbosePocketSphinx = TRUE;
     
@@ -65,27 +60,21 @@
     
     [[OEPocketsphinxController sharedInstance] setActive:TRUE error:nil];
     
-//    NSArray *firstLanguageArray = @[@"START",
-//                                    @"ADJUST MIRRORS",
-//                                    @"ADJUST MY CHAIR",
-//                                    @"SCAN THE REAR",
-//                                    @"HOW MANY FUEL TO MY HOUSE",
-//                                    @"OPEN MY WINDOW",
-//                                    @"CLOSE SUNROOT"];
+    NSArray *firstLanguageArray = @[@"OPEN", @"CLOSE", @"START"];
     
-    NSDictionary *firstLanguageDict = @{
-                                        ThisWillBeSaidOnce : @[
-                                                @{ OneOfTheseCanBeSaidOnce : @[@"HELLO JARVIS", @"JARVIS"]},
-                                                @{ OneOfTheseWillBeSaidOnce : @[@"START", @"OPEN", @"CLOSE", @"SCAN", @"READ"]},
-                                                @{ OneOfTheseWillBeSaidOnce : @[@"THE CAR", @"MY WINDOW", @"MY CHAIR", @"MY DOOR", @"THE INSTRUMENTS"]}
-                                        ]};
+//    NSDictionary *firstLanguageDict = @{
+//                                        ThisWillBeSaidOnce : @[
+//                                                @{ OneOfTheseCanBeSaidOnce : @[@"HELLO JARVIS", @"JARVIS"]},
+//                                                @{ OneOfTheseWillBeSaidOnce : @[@"START", @"OPEN", @"CLOSE", @"SCAN", @"READ"]},
+//                                                @{ OneOfTheseWillBeSaidOnce : @[@"THE CAR", @"MY WINDOW", @"MY CHAIR", @"MY DOOR", @"THE INSTRUMENTS"]}
+//                                        ]};
     
     OELanguageModelGenerator *languageModelGenerator = [[OELanguageModelGenerator alloc] init];
     
     languageModelGenerator.verboseLanguageModelGenerator = TRUE;
     
-    //NSError *error = [languageModelGenerator generateLanguageModelFromArray:firstLanguageArray withFilesNamed:@"FirstOpenEarsDynamicLanguageModel" forAcousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"]];
-    NSError *error = [languageModelGenerator generateGrammarFromDictionary:firstLanguageDict withFilesNamed:@"FirstOpenEarsDynamicLanguageModel" forAcousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"]];
+    NSError *error = [languageModelGenerator generateLanguageModelFromArray:firstLanguageArray withFilesNamed:@"FirstOpenEarsDynamicLanguageModel" forAcousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"]];
+//    NSError *error = [languageModelGenerator generateGrammarFromDictionary:firstLanguageDict withFilesNamed:@"FirstOpenEarsDynamicLanguageModel" forAcousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"]];
     
     if(error) {
         NSLog(@"Dynamic language generator reported error %@", [error description]);
@@ -117,12 +106,13 @@
         self.stopButton.enabled = FALSE;
     }
 
-    
-    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfMappedFile:@"wave.gif"]];
+    NSURL *imgPath = [[NSBundle mainBundle] URLForResource:@"wave" withExtension:@"gif"];
+    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:imgPath]];
     FLAnimatedImageView *imageView = [[FLAnimatedImageView alloc] init];
     imageView.animatedImage = image;
-    imageView.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
+    imageView.frame = CGRectMake(0.0, 0.0, 320, 320.0);
     [self.view addSubview:imageView];
+    [self.view sendSubviewToBack:imageView];
     
 }
 
@@ -130,25 +120,25 @@
     
     NSLog(@"Local callback: The received hypothesis is %@ with a score of %@ and an ID of %@", hypothesis, recognitionScore, utteranceID);
     
-    if([hypothesis containsString:@"OPEN"]) {
-        
-    } else if ([hypothesis containsString:@"CLOSE"]) {
-        
-    } else if ([hypothesis containsString:@"START"]) {
-        
-        
-    }
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    NSManagedObjectContext *context = objectManager.managedObjectStore.mainQueueManagedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DeviceStatus" inManagedObjectContext:context];
+    DeviceStatus *deviceStatus = [[DeviceStatus alloc]initWithEntity:entity insertIntoManagedObjectContext:context];
     
-    [self.fliteController say:[NSString stringWithFormat:@"You said %@", hypothesis] withVoice:self.slt];
-}
-
-static void ShowAlertWithError(NSString *error)
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:error
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    deviceStatus.id = @1;
+    deviceStatus.identification = @"DEV001";
+    deviceStatus.created = @12311231;
+    
+    if([hypothesis containsString:@"OPEN"]) {
+        deviceStatus.status = @1;
+    } else if ([hypothesis containsString:@"CLOSE"]) {
+        deviceStatus.status = @2;
+    } else if ([hypothesis containsString:@"START"]) {
+        deviceStatus.id = @2;
+        deviceStatus.status = @1;
+    }
+    [self putDeviceStatus:deviceStatus];
+    [self.fliteController say:[NSString stringWithFormat:@"Command %@ in progress", hypothesis] withVoice:self.slt];
 }
 
 #ifdef kGetNbest
@@ -361,13 +351,86 @@ static void ShowAlertWithError(NSString *error)
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)startButtonAction:(UIButton *)sender {
-    NSString *path  = [[NSBundle mainBundle] pathForResource:@"button-3" ofType:@"wav"];
-    NSURL *pathURL = [NSURL fileURLWithPath : path];
+- (IBAction)powerButtonAction:(id)sender {
+//    DeviceStatus *deviceStatus = [DeviceStatus new];
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    NSManagedObjectContext *context = objectManager.managedObjectStore.mainQueueManagedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DeviceStatus" inManagedObjectContext:context];
+    DeviceStatus *deviceStatus = [[DeviceStatus alloc]initWithEntity:entity insertIntoManagedObjectContext:context];
     
-    SystemSoundID audioEffect;
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-    AudioServicesPlaySystemSound(audioEffect);
+    deviceStatus.id = @2;
+    deviceStatus.identification = @"DEV002";
+    deviceStatus.created = @0;
+    
+    if([sender isSelected]){
+        deviceStatus.status = @1;
+        [sender setSelected:NO];
+    } else {
+        deviceStatus.status = @0;
+        [sender setSelected:YES];
+    }
+    
+    
+    [self putDeviceStatus:deviceStatus];
+}
+
+- (IBAction)keyButtonAction:(id)sender {
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    NSManagedObjectContext *context = objectManager.managedObjectStore.mainQueueManagedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DeviceStatus" inManagedObjectContext:context];
+    DeviceStatus *deviceStatus = [[DeviceStatus alloc]initWithEntity:entity insertIntoManagedObjectContext:context];
+    
+    deviceStatus.id = @1;
+    deviceStatus.identification = @"DEV001";
+    deviceStatus.created = @0;
+    
+    if([sender isSelected]){
+        deviceStatus.status = @1;
+        [sender setSelected:NO];
+    } else {
+        deviceStatus.status = @0;
+        [sender setSelected:YES];
+    }
+    
+    [self putDeviceStatus:deviceStatus];
+}
+
+- (void) putDeviceStatus:(DeviceStatus *)deviceStatus {
+    
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:hud];
+    hud.detailsLabelText = @"¡Command in progress!";
+    hud.color = [UIColor colorWithRed:0 green:0 blue:0 alpha: 0.5];
+    
+    //        RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    //        NSManagedObjectContext *context = objectManager.managedObjectStore.mainQueueManagedObjectContext;
+    //        DeviceStatus *deviceStatus = [NSEntityDescription insertNewObjectForEntityForName:@"DeviceStatus" inManagedObjectContext:context];
+    [[RKObjectManager sharedManager] putObject:deviceStatus
+                                          path:[NSString stringWithFormat:@"%@/%@", DEVICE_STATUS_PATH, deviceStatus.id]
+                                    parameters:nil
+                                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                           hud.detailsLabelText = @"¡Success!";
+                                           hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+                                           hud.mode = MBProgressHUDModeCustomView;
+                                           
+                                       }
+                                       failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                           ShowAlertWithError(error.localizedDescription);
+                                           [hud hide:YES];
+                                       }];
+}
+
+static void ShowAlertWithError(NSString *error)
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:error
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+
+- (IBAction)startButtonAction:(UIButton *)sender {
     
     if(![OEPocketsphinxController sharedInstance].isListening) {
         [[OEPocketsphinxController sharedInstance] startListeningWithLanguageModelAtPath:self.pathToFirstDynamicallyGeneratedLanguageModel dictionaryAtPath:self.pathToFirstDynamicallyGeneratedDictionary acousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:FALSE];
@@ -375,4 +438,5 @@ static void ShowAlertWithError(NSString *error)
     self.startButton.enabled = FALSE;
 
 }
+
 @end

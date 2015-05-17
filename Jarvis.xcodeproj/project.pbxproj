@@ -39,6 +39,8 @@
 		6367F10B1B08B6D9006B2117 /* wave.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6367F10A1B08B6D9006B2117 /* wave.gif */; };
 		6367F10D1B08CBF0006B2117 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6367F10C1B08CBF0006B2117 /* CoreData.framework */; };
 		6367F10F1B08E45C006B2117 /* Botton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6367F10E1B08E45C006B2117 /* Botton.png */; };
+		6367F1131B0901D8006B2117 /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 6367F1121B0901D8006B2117 /* key.png */; };
+		6367F1151B090400006B2117 /* standby.png in Resources */ = {isa = PBXBuildFile; fileRef = 6367F1141B090400006B2117 /* standby.png */; };
 		FAC7267FCC8553311EDA088B /* libPods-Jarvis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA93A2EB8ABB34CA9ABF06F6 /* libPods-Jarvis.a */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +104,8 @@
 		6367F10A1B08B6D9006B2117 /* wave.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = wave.gif; sourceTree = "<group>"; };
 		6367F10C1B08CBF0006B2117 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6367F10E1B08E45C006B2117 /* Botton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Botton.png; sourceTree = "<group>"; };
+		6367F1121B0901D8006B2117 /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
+		6367F1141B090400006B2117 /* standby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = standby.png; sourceTree = "<group>"; };
 		CCE75F9ECC8404CA866FB2A0 /* Pods-Jarvis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jarvis.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jarvis/Pods-Jarvis.release.xcconfig"; sourceTree = "<group>"; };
 		CEC757543241FB2EF893E2FB /* Pods-Jarvis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jarvis.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jarvis/Pods-Jarvis.debug.xcconfig"; sourceTree = "<group>"; };
 		EA93A2EB8ABB34CA9ABF06F6 /* libPods-Jarvis.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Jarvis.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,6 +225,8 @@
 		6367F0B01B07D60E006B2117 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				6367F1141B090400006B2117 /* standby.png */,
+				6367F1121B0901D8006B2117 /* key.png */,
 				6367F10E1B08E45C006B2117 /* Botton.png */,
 				6367F10A1B08B6D9006B2117 /* wave.gif */,
 				6367F0FB1B08A36B006B2117 /* 37x-Checkmark.png */,
@@ -384,6 +390,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6367F1131B0901D8006B2117 /* key.png in Resources */,
 				6367F0BB1B07DA90006B2117 /* Main.storyboard in Resources */,
 				6367F0C51B081F21006B2117 /* AcousticModelSpanish.bundle in Resources */,
 				6367F0C41B081F21006B2117 /* AcousticModelEnglish.bundle in Resources */,
@@ -394,6 +401,7 @@
 				6367F10F1B08E45C006B2117 /* Botton.png in Resources */,
 				6367F0FA1B08A32D006B2117 /* Backgrund.png in Resources */,
 				6367F0F81B089CF4006B2117 /* SubmitButtonCell.xib in Resources */,
+				6367F1151B090400006B2117 /* standby.png in Resources */,
 				6367F0B91B07D79D006B2117 /* LaunchScreen.png in Resources */,
 				6367F0FD1B08A36B006B2117 /* 37x-Checkmark.png in Resources */,
 			);

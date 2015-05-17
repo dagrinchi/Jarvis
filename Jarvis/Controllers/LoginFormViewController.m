@@ -61,6 +61,14 @@
                                                 hud.labelText = @"Ready!";
                                                 hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
                                                 hud.mode = MBProgressHUDModeCustomView;
+                                                
+                                                NSString *path  = [[NSBundle mainBundle] pathForResource:@"button-3" ofType:@"wav"];
+                                                NSURL *pathURL = [NSURL fileURLWithPath : path];
+                                                
+                                                SystemSoundID audioEffect;
+                                                AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
+                                                AudioServicesPlaySystemSound(audioEffect);
+                                                
                                                 [self performSelector:@selector(goApp:) withObject:hud afterDelay:1.5];
                                             }
                                             failure:^(RKObjectRequestOperation *operation, NSError *error) {

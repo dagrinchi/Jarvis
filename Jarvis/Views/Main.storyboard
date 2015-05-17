@@ -53,6 +53,17 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oR-Af-aEf">
+                                <rect key="frame" x="0.0" y="316" width="320" height="60"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="21"/>
+                                <state key="normal" title="START" backgroundImage="Botton.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButtonAction:" destination="uik-05-D8D" eventType="touchUpInside" id="nWU-by-tTv"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.000000" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QEh-3N-ni6">
                                 <rect key="frame" x="184" y="28" width="120" height="30"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,7 +72,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxL-X7-1Ag">
-                                <rect key="frame" x="0.0" y="426" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="248" width="320" height="60"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="21"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="STOP" backgroundImage="Botton.png">
@@ -79,15 +90,24 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oR-Af-aEf">
-                                <rect key="frame" x="0.0" y="488" width="320" height="60"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="21"/>
-                                <state key="normal" title="START" backgroundImage="Botton.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xv7-Ha-9Ob">
+                                <rect key="frame" x="100" y="378" width="120" height="120"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="standby.png" backgroundImage="Backgrund.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="startButtonAction:" destination="uik-05-D8D" eventType="touchUpInside" id="nWU-by-tTv"/>
+                                    <action selector="powerButtonAction:" destination="uik-05-D8D" eventType="touchUpInside" id="7p3-s2-PUs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYA-My-Sxa">
+                                <rect key="frame" x="16" y="378" width="76" height="76"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="key.png" backgroundImage="Backgrund.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="keyButtonAction:" destination="uik-05-D8D" eventType="touchUpInside" id="Ebg-EO-MVC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -96,7 +116,9 @@
                     <navigationItem key="navigationItem" id="iGz-OF-y7H"/>
                     <connections>
                         <outlet property="inLevelLabel" destination="QEh-3N-ni6" id="EkI-yd-MBi"/>
+                        <outlet property="keyButton" destination="cYA-My-Sxa" id="KBx-uk-Y3v"/>
                         <outlet property="outLevelLabel" destination="guq-ai-lF3" id="dWu-Kk-zQe"/>
+                        <outlet property="powerButton" destination="xv7-Ha-9Ob" id="hpU-O3-gHM"/>
                         <outlet property="startButton" destination="8oR-Af-aEf" id="DSe-rf-hpM"/>
                         <outlet property="stopButton" destination="rxL-X7-1Ag" id="3e8-y7-wjJ"/>
                     </connections>
@@ -126,7 +148,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Backgrund.png" width="640" height="1136"/>
         <image name="Botton.png" width="320" height="60"/>
+        <image name="key.png" width="32" height="32"/>
+        <image name="standby.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

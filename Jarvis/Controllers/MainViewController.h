@@ -8,6 +8,7 @@
 
 #import <CoreData/CoreData.h>
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
 #import <OpenEars/OEPocketsphinxController.h>
 #import <OpenEars/OEFliteController.h>
 #import <OpenEars/OELanguageModelGenerator.h>
@@ -15,7 +16,6 @@
 #import <OpenEars/OEAcousticModel.h>
 #import <Slt/Slt.h>
 #import <OpenEars/OEEventsObserver.h>
-#import <AudioToolbox/AudioToolbox.h>
 #import "FLAnimatedImage.h"
 #import "DeviceStatus.h"
 #import <RestKit/RestKit.h>

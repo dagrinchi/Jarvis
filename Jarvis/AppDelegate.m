@@ -95,7 +95,7 @@
                                                                                  keyPath:nil
                                                                              statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)],
                                      [RKResponseDescriptor responseDescriptorWithMapping:deviceStatusRpMapping
-                                                                                  method:RKRequestMethodPOST
+                                                                                  method:RKRequestMethodPUT
                                                                              pathPattern:DEVICE_STATUS_PATH
                                                                                  keyPath:nil
                                                                              statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)],

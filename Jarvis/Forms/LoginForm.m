@@ -22,7 +22,7 @@
 - (NSArray *)extraFields
 {
     return @[@{FXFormFieldHeader: @"",
-               FXFormFieldTitle: @"LogIn",
+               FXFormFieldTitle: @"Send",
                FXFormFieldCell: [SubmitButtonCell class],
                FXFormFieldAction: @"submitLoginForm:"}];
 }

@@ -26,7 +26,7 @@
 
 - (NSArray *)extraFields
 {
-    return @[@{FXFormFieldTitle: @"Sign up",
+    return @[@{FXFormFieldTitle: @"Send",
                FXFormFieldHeader: @"",
                FXFormFieldCell: [SubmitButtonCell class],
                FXFormFieldAction: @"submitRegistrationForm:"}];

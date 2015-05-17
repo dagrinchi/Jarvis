@@ -24,7 +24,7 @@
     self.tableView.backgroundColor = bgColor;
     self.view.backgroundColor = bgColor;
     
-    self.title = @"Register";
+    self.title = @"SignUp";
     
 }
 
