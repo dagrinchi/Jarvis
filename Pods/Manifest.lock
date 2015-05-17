@@ -1,0 +1,96 @@
+PODS:
+  - AFNetworking (1.3.4)
+  - FXForms (1.2.10)
+  - FXModelValidation (1.0.2)
+  - ISO8601DateFormatterValueTransformer (0.6.0):
+    - RKValueTransformers (~> 1.1.0)
+  - MBProgressHUD (0.9.1)
+  - RestKit (0.24.1):
+    - RestKit/Core
+  - RestKit/Core (0.24.1):
+    - RestKit/CoreData
+    - RestKit/Network
+    - RestKit/ObjectMapping
+  - RestKit/CoreData (0.24.1):
+    - RestKit/ObjectMapping
+  - RestKit/Network (0.24.1):
+    - AFNetworking (~> 1.3.0)
+    - RestKit/ObjectMapping
+    - RestKit/Support
+    - SOCKit
+  - RestKit/ObjectMapping (0.24.1):
+    - ISO8601DateFormatterValueTransformer (~> 0.6.0)
+    - RestKit/Support
+    - RKValueTransformers (~> 1.1.0)
+  - RestKit/Search (0.24.1):
+    - RestKit/CoreData
+  - RestKit/Support (0.24.1):
+    - TransitionKit (~> 2.1.0)
+  - RKValueTransformers (1.1.2)
+  - SAMAddressBar (0.1.0)
+  - SAMBadgeView (0.1.1)
+  - SAMCategories (0.5.2)
+  - SAMCircleProgressView (0.1.1)
+  - SAMGradientView (0.2.1)
+  - SAMHUDView (0.1.3)
+  - SAMLabel (0.1.0)
+  - SAMLoadingView (0.1.0)
+  - SAMRateLimit (0.2.0)
+  - SAMTextField (0.1.2)
+  - SAMTextView (0.2.2)
+  - SAMWebView (0.2.1)
+  - SOCKit (1.1)
+  - SSToolkit (2.0.0):
+    - SAMAddressBar
+    - SAMBadgeView
+    - SAMCategories
+    - SAMCircleProgressView
+    - SAMGradientView
+    - SAMHUDView
+    - SAMLabel
+    - SAMLoadingView
+    - SAMRateLimit
+    - SAMTextField
+    - SAMTextView
+    - SAMWebView
+  - SVWebViewController (HEAD based on 1.0)
+  - TDBadgedCell (2.6)
+  - TransitionKit (2.1.1)
+
+DEPENDENCIES:
+  - FXForms (= 1.2.10)
+  - FXModelValidation (= 1.0.2)
+  - MBProgressHUD (~> 0.9)
+  - RestKit (~> 0.24.0)
+  - RestKit/Search (~> 0.24.0)
+  - SSToolkit (= 2.0.0)
+  - SVWebViewController (HEAD)
+  - TDBadgedCell (= 2.6)
+
+SPEC CHECKSUMS:
+  AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
+  FXForms: c86103bbbd127f1531b5995059b9b7e98ea86f07
+  FXModelValidation: 61ba31587997ced7c7121cf8998711df9fe1c266
+  ISO8601DateFormatterValueTransformer: 3ac3a721381697cab4e792d8049ce2f2e9ad3036
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  RestKit: 1987b5efef289c6b27bd980714d6ca48d3871b78
+  RKValueTransformers: 66ac5e4f077fdbe3496e792d89eeff4c3eb67701
+  SAMAddressBar: ca4278987cca36a65fd8d29fae3fc5f3fa732469
+  SAMBadgeView: f27d499b7f233e29277325f318a9dcdd2a8fc9e9
+  SAMCategories: bf8287f7961a0b343168d1fee16338dc1626ea39
+  SAMCircleProgressView: 8bfac68a15d1dd1e3d0c1ec411895898efed9dda
+  SAMGradientView: dd5edfe971cea0f1f3369b49f5fb255c0ff3921a
+  SAMHUDView: 374d9b53c2d52bf2e7b49e943ae66ee7ed5538b2
+  SAMLabel: 3792d68d0a04da5600420843d44ec50631695c15
+  SAMLoadingView: 7ffc4f0efe85f9717d6e367b6b93e32befe4407c
+  SAMRateLimit: ba2d40ccb3a4bf04e425035ef1ca88751d969e47
+  SAMTextField: a0f4eb5b48b45aef56453c265262b45154bc3e2a
+  SAMTextView: 979c43bb1fa5859ddfbfeb35e9c296a2b0ec55fd
+  SAMWebView: d141ed60d23f82a0cbfeeb952e93a690f55bc89f
+  SOCKit: c7376ac262bea9115b8f749358f762522a47d392
+  SSToolkit: 6aa7a0966ee45788d0ec3748be7d753a2fef9629
+  SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
+  TDBadgedCell: 522ef0fe70221a031eff8d424f5d57379f652088
+  TransitionKit: 3a14b6acc7cf2d1dd3e454e24dbad1cfab9a1ef1
+
+COCOAPODS: 0.34.4

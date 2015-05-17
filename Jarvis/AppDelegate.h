@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
+#import <RestKit/CoreData.h>
+#import <RestKit/Search.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

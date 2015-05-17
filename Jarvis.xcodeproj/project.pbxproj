@@ -9,11 +9,19 @@
 /* Begin PBXBuildFile section */
 		6367F08B1B07A9E6006B2117 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6367F08A1B07A9E6006B2117 /* main.m */; };
 		6367F08E1B07A9E6006B2117 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6367F08D1B07A9E6006B2117 /* AppDelegate.m */; };
-		6367F0911B07A9E6006B2117 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6367F0901B07A9E6006B2117 /* ViewController.m */; };
-		6367F0941B07A9E6006B2117 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6367F0921B07A9E6006B2117 /* Main.storyboard */; };
 		6367F0961B07A9E6006B2117 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6367F0951B07A9E6006B2117 /* Images.xcassets */; };
-		6367F0991B07A9E6006B2117 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6367F0971B07A9E6006B2117 /* LaunchScreen.xib */; };
 		6367F0A51B07A9E6006B2117 /* JarvisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6367F0A41B07A9E6006B2117 /* JarvisTests.m */; };
+		6367F0B91B07D79D006B2117 /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 6367F0B81B07D79D006B2117 /* LaunchScreen.png */; };
+		6367F0BB1B07DA90006B2117 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6367F0BA1B07DA90006B2117 /* Main.storyboard */; };
+		6367F0BF1B0816B8006B2117 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6367F0BE1B0816B8006B2117 /* MainViewController.m */; };
+		6367F0C41B081F21006B2117 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6367F0C01B081F21006B2117 /* AcousticModelEnglish.bundle */; };
+		6367F0C51B081F21006B2117 /* AcousticModelSpanish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6367F0C11B081F21006B2117 /* AcousticModelSpanish.bundle */; };
+		6367F0C61B081F21006B2117 /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6367F0C21B081F21006B2117 /* OpenEars.framework */; };
+		6367F0C71B081F21006B2117 /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6367F0C31B081F21006B2117 /* Slt.framework */; };
+		6367F0CD1B08349E006B2117 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6367F0CC1B08349E006B2117 /* AudioToolbox.framework */; };
+		6367F0CF1B083535006B2117 /* button-3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6367F0CE1B083535006B2117 /* button-3.wav */; };
+		6367F0D11B084330006B2117 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6367F0D01B084330006B2117 /* AVFoundation.framework */; };
+		FAC7267FCC8553311EDA088B /* libPods-Jarvis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA93A2EB8ABB34CA9ABF06F6 /* libPods-Jarvis.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +40,25 @@
 		6367F08A1B07A9E6006B2117 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6367F08C1B07A9E6006B2117 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6367F08D1B07A9E6006B2117 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6367F08F1B07A9E6006B2117 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6367F0901B07A9E6006B2117 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		6367F0931B07A9E6006B2117 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6367F0951B07A9E6006B2117 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6367F0981B07A9E6006B2117 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		6367F09E1B07A9E6006B2117 /* JarvisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JarvisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6367F0A31B07A9E6006B2117 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6367F0A41B07A9E6006B2117 /* JarvisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JarvisTests.m; sourceTree = "<group>"; };
+		6367F0B81B07D79D006B2117 /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
+		6367F0BA1B07DA90006B2117 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		6367F0BD1B0816B8006B2117 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		6367F0BE1B0816B8006B2117 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		6367F0C01B081F21006B2117 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelEnglish.bundle; sourceTree = "<group>"; };
+		6367F0C11B081F21006B2117 /* AcousticModelSpanish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelSpanish.bundle; sourceTree = "<group>"; };
+		6367F0C21B081F21006B2117 /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEars.framework; sourceTree = "<group>"; };
+		6367F0C31B081F21006B2117 /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
+		6367F0CC1B08349E006B2117 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6367F0CE1B083535006B2117 /* button-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "button-3.wav"; sourceTree = "<group>"; };
+		6367F0D01B084330006B2117 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6367F0D41B085251006B2117 /* Webservice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Webservice.h; sourceTree = "<group>"; };
+		CCE75F9ECC8404CA866FB2A0 /* Pods-Jarvis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jarvis.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jarvis/Pods-Jarvis.release.xcconfig"; sourceTree = "<group>"; };
+		CEC757543241FB2EF893E2FB /* Pods-Jarvis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jarvis.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jarvis/Pods-Jarvis.debug.xcconfig"; sourceTree = "<group>"; };
+		EA93A2EB8ABB34CA9ABF06F6 /* libPods-Jarvis.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Jarvis.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +66,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6367F0D11B084330006B2117 /* AVFoundation.framework in Frameworks */,
+				6367F0CD1B08349E006B2117 /* AudioToolbox.framework in Frameworks */,
+				6367F0C71B081F21006B2117 /* Slt.framework in Frameworks */,
+				FAC7267FCC8553311EDA088B /* libPods-Jarvis.a in Frameworks */,
+				6367F0C61B081F21006B2117 /* OpenEars.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +84,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0044AB47D6C236C5203DFEF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6367F0D01B084330006B2117 /* AVFoundation.framework */,
+				6367F0CC1B08349E006B2117 /* AudioToolbox.framework */,
+				6367F0C01B081F21006B2117 /* AcousticModelEnglish.bundle */,
+				6367F0C11B081F21006B2117 /* AcousticModelSpanish.bundle */,
+				6367F0C21B081F21006B2117 /* OpenEars.framework */,
+				6367F0C31B081F21006B2117 /* Slt.framework */,
+				EA93A2EB8ABB34CA9ABF06F6 /* libPods-Jarvis.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		03ACA47A9ED62EF03D62C29F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CEC757543241FB2EF893E2FB /* Pods-Jarvis.debug.xcconfig */,
+				CCE75F9ECC8404CA866FB2A0 /* Pods-Jarvis.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6367F07C1B07A9E6006B2117 = {
 			isa = PBXGroup;
 			children = (
 				6367F0871B07A9E6006B2117 /* Jarvis */,
 				6367F0A11B07A9E6006B2117 /* JarvisTests */,
 				6367F0861B07A9E6006B2117 /* Products */,
+				03ACA47A9ED62EF03D62C29F /* Pods */,
+				0044AB47D6C236C5203DFEF8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,13 +130,15 @@
 		6367F0871B07A9E6006B2117 /* Jarvis */ = {
 			isa = PBXGroup;
 			children = (
+				6367F0B01B07D60E006B2117 /* Assets */,
+				6367F0B11B07D60E006B2117 /* Config */,
+				6367F0B21B07D60E006B2117 /* Controllers */,
+				6367F0B31B07D60E006B2117 /* Forms */,
+				6367F0B41B07D60E006B2117 /* Models */,
+				6367F0B51B07D60E006B2117 /* Views */,
 				6367F08C1B07A9E6006B2117 /* AppDelegate.h */,
 				6367F08D1B07A9E6006B2117 /* AppDelegate.m */,
-				6367F08F1B07A9E6006B2117 /* ViewController.h */,
-				6367F0901B07A9E6006B2117 /* ViewController.m */,
-				6367F0921B07A9E6006B2117 /* Main.storyboard */,
 				6367F0951B07A9E6006B2117 /* Images.xcassets */,
-				6367F0971B07A9E6006B2117 /* LaunchScreen.xib */,
 				6367F0881B07A9E6006B2117 /* Supporting Files */,
 			);
 			path = Jarvis;
@@ -119,6 +170,54 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6367F0B01B07D60E006B2117 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				6367F0B81B07D79D006B2117 /* LaunchScreen.png */,
+				6367F0CE1B083535006B2117 /* button-3.wav */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		6367F0B11B07D60E006B2117 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				6367F0D41B085251006B2117 /* Webservice.h */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		6367F0B21B07D60E006B2117 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6367F0BD1B0816B8006B2117 /* MainViewController.h */,
+				6367F0BE1B0816B8006B2117 /* MainViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6367F0B31B07D60E006B2117 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Forms;
+			sourceTree = "<group>";
+		};
+		6367F0B41B07D60E006B2117 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6367F0B51B07D60E006B2117 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6367F0BA1B07DA90006B2117 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +225,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6367F0A81B07A9E6006B2117 /* Build configuration list for PBXNativeTarget "Jarvis" */;
 			buildPhases = (
+				416597135BE04FE5159247CF /* Check Pods Manifest.lock */,
 				6367F0811B07A9E6006B2117 /* Sources */,
 				6367F0821B07A9E6006B2117 /* Frameworks */,
 				6367F0831B07A9E6006B2117 /* Resources */,
+				A1C0F19A980AD46D6AED1F27 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -200,9 +301,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6367F0941B07A9E6006B2117 /* Main.storyboard in Resources */,
-				6367F0991B07A9E6006B2117 /* LaunchScreen.xib in Resources */,
+				6367F0BB1B07DA90006B2117 /* Main.storyboard in Resources */,
+				6367F0C51B081F21006B2117 /* AcousticModelSpanish.bundle in Resources */,
+				6367F0C41B081F21006B2117 /* AcousticModelEnglish.bundle in Resources */,
 				6367F0961B07A9E6006B2117 /* Images.xcassets in Resources */,
+				6367F0CF1B083535006B2117 /* button-3.wav in Resources */,
+				6367F0B91B07D79D006B2117 /* LaunchScreen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,13 +319,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		416597135BE04FE5159247CF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A1C0F19A980AD46D6AED1F27 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Jarvis/Pods-Jarvis-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6367F0811B07A9E6006B2117 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6367F0911B07A9E6006B2117 /* ViewController.m in Sources */,
 				6367F08E1B07A9E6006B2117 /* AppDelegate.m in Sources */,
+				6367F0BF1B0816B8006B2117 /* MainViewController.m in Sources */,
 				6367F08B1B07A9E6006B2117 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,25 +380,6 @@
 			targetProxy = 6367F09F1B07A9E6006B2117 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		6367F0921B07A9E6006B2117 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6367F0931B07A9E6006B2117 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		6367F0971B07A9E6006B2117 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6367F0981B07A9E6006B2117 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		6367F0A61B07A9E6006B2117 /* Debug */ = {
@@ -300,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -338,7 +456,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -348,10 +466,17 @@
 		};
 		6367F0A91B07A9E6006B2117 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEC757543241FB2EF893E2FB /* Pods-Jarvis.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Jarvis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -359,10 +484,17 @@
 		};
 		6367F0AA1B07A9E6006B2117 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCE75F9ECC8404CA866FB2A0 /* Pods-Jarvis.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Jarvis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -421,6 +553,7 @@
 				6367F0AA1B07A9E6006B2117 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6367F0AB1B07A9E6006B2117 /* Build configuration list for PBXNativeTarget "JarvisTests" */ = {
 			isa = XCConfigurationList;
@@ -429,6 +562,7 @@
 				6367F0AD1B07A9E6006B2117 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
