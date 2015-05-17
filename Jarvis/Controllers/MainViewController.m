@@ -60,7 +60,7 @@
     
     [[OEPocketsphinxController sharedInstance] setActive:TRUE error:nil];
     
-    NSArray *firstLanguageArray = @[@"OPEN", @"CLOSE", @"START"];
+    NSArray *firstLanguageArray = @[@"OPEN", @"CLOSE", @"START", @"STOP"];
     
 //    NSDictionary *firstLanguageDict = @{
 //                                        ThisWillBeSaidOnce : @[
@@ -134,8 +134,9 @@
     } else if ([hypothesis containsString:@"CLOSE"]) {
         deviceStatus.status = @2;
     } else if ([hypothesis containsString:@"START"]) {
-        deviceStatus.id = @2;
-        deviceStatus.status = @1;
+        deviceStatus.status = @3;
+    } else if ([hypothesis containsString:@"STOP"]) {
+        deviceStatus.status = @4;
     }
     [self putDeviceStatus:deviceStatus];
     [self.fliteController say:[NSString stringWithFormat:@"Command %@ in progress", hypothesis] withVoice:self.slt];
@@ -358,15 +359,15 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"DeviceStatus" inManagedObjectContext:context];
     DeviceStatus *deviceStatus = [[DeviceStatus alloc]initWithEntity:entity insertIntoManagedObjectContext:context];
     
-    deviceStatus.id = @2;
+    deviceStatus.id = @1;
     deviceStatus.identification = @"DEV002";
     deviceStatus.created = @0;
     
     if([sender isSelected]){
-        deviceStatus.status = @1;
+        deviceStatus.status = @3;
         [sender setSelected:NO];
     } else {
-        deviceStatus.status = @0;
+        deviceStatus.status = @4;
         [sender setSelected:YES];
     }
     
@@ -388,7 +389,7 @@
         deviceStatus.status = @1;
         [sender setSelected:NO];
     } else {
-        deviceStatus.status = @0;
+        deviceStatus.status = @2;
         [sender setSelected:YES];
     }
     
